@@ -35,7 +35,7 @@ mysqli_query($connect, $update_query);
     <div class="d-flex justify-content-center mt-4">
         <a href="./main.php" class="btn btn-outline-dark me-3">목록</a>
         <a href="./modify.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>" class="btn btn-outline-dark me-3">수정</a>
-        <a href="./bdelete.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>" class="btn btn-outline-danger">삭제</a>
+        <a href="./board_delete.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>" class="btn btn-outline-danger">삭제</a>
     </div>
 
     <div class="mt-5">
@@ -112,13 +112,13 @@ mysqli_query($connect, $update_query);
 <script>
     function deleteComment(comment_number) {
         if (confirm("댓글을 삭제하시겠습니까?")) {
-            window.location.href = "comment_delete.php?number="+comment_number;
+            window.location.href = "./comment_delete.php?number="+comment_number;
         }
     }
 
     function deleteReply(reply_number) {
         if (confirm("댓글을 삭제하시겠습니까?")) {
-            window.location.href = "reply_delete.php?number="+reply_number;
+            window.location.href = "./reply_delete.php?number="+reply_number;
         }
     }
 </script>
