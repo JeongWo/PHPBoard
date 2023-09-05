@@ -12,7 +12,7 @@ if ($result) {
         window.location.href = document.referrer; 
         </script>";
 } else {
-    echo "오류가 발생하였습니다.";
+    echo "오류가 발생하였습니다."; 
 }
 
 
