@@ -1,7 +1,7 @@
 <?php
 require_once "connect.php";
 
-$comment_number = $_GET['reply_number'];
+$comment_number = $_GET['number'];
 
 
 $query = "DELETE FROM comment WHERE number='$comment_number'";
