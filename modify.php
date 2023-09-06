@@ -1,5 +1,5 @@
 <?php
-include "connect.php";
+require "connect.php";
 $id=$_GET['id'];
 $number=$_GET['number'];
 $query= "SELECT title, content, date, id FROM board WHERE number=$number";
