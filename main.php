@@ -12,11 +12,12 @@
             require "connect.php";
             session_start();
             if(isset($_SESSION['userid'])) {
-                echo $_SESSION['userid'];?>님 안녕하세요<br/>
+                echo $_SESSION['userid'];
+                ?><br/>
                 <?php
                 echo '<button onclick="location.href=\'./logout.php\'">로그아웃</button>';
             }else{
-                ?> <button  onclick="location.href='./login.php'" align="center">로그인</button><br/>
+                ?> <button  onclick="location.href='./login.php'" align="center">Login</button><br/>
                 <?php
             }
             ?>
@@ -36,7 +37,7 @@
                     <input type="text" class="form-control" name="search" placeholder="검색어를 입력하세요" />
                 </div>
                 <div class="flex-grow-2">
-                    <button class="s_button" type="submit">검색</button>
+                    <button class="s_button" type="submit">Search</button>
                 </div>
             </form>
 
@@ -75,7 +76,7 @@
     </tbody>
 </table>
             <div class="text-center">
-                <button onclick="location.href='./write.php'">글쓰기</button>
+                <button onclick="location.href='./write.php'">write Post</button>
             </div>
         </div>
     </div>
