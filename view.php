@@ -95,7 +95,7 @@ mysqli_query($connect, $update_query);
                             <button class="btn btn-sm btn-outline-danger comment-delete-btn" onclick="deleteReply(<?=$reply['reply_number']?>)">댓글삭제</button>
                         <?php } ?>
                     </div>
-                    <div class="mt-2"><?=$reply['contendt'];?></div>
+                    <div class="mt-2"><?=$reply['content'];?></div>
                 </div>
             <?php } ?>
 
