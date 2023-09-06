@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="test.css">
+
 </head>
 <body>
 <?php
@@ -39,7 +41,7 @@
                 </tbody>
             </table>
             <div class="text-center mt-3">
-                <button type="submit" class="btn btn-outline-primary">작성</button>
+                <button type="submit" >작성</button>
             </div>
         </form>
     </div>
