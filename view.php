@@ -35,9 +35,9 @@ mysqli_query($connect, $update_query);
     <div class="d-flex justify-content-center mt-4">
         <a href="./main.php" class="btn btn-outline-dark me-3">목록</a>
         <?php
-        if(isset($_SESSION['id'])){
-            echo '<a href="./modify.php?number=' . $number . '&id=' . $_SESSION['userid'] . '" class="btn btn-outline-dark me-3">수정</a>';
-            echo '<a href="./board_delete.php?number=' . $number. '&id='. $_SESSION['userid'] . '" class="btn btn-outline-danger">삭제</a>';
+        if(isset($_SESSION['userid'])){
+            echo '<a href="./modify.php?number=' . $number . '&id=' . $_rows['id'] . '" class="btn btn-outline-dark me-3">수정</a>';
+            echo '<a href="./board_delete.php?number=' . $number. '&id='. $_rows['id'] . '" class="btn btn-outline-danger">삭제</a>';
         }
         ?>
     </div>
