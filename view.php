@@ -10,9 +10,20 @@ body {
   background-color: #333;
 }
 .border {
-    background-color: #b38bff;
+    background-color: white;
 }
-
+h1.text-center {
+    color: #b38bff;
+}
+h3.text-center {
+    color: #b38bff;
+}
+a.btn {
+    background: white;
+}
+.border.p {
+    background: #333;
+}
 
 </style>
 <body>
@@ -44,7 +55,7 @@ mysqli_query($connect, $update_query);
     </div>
 
     <div class="d-flex justify-content-center mt-4">
-        <a href="./main.php" class="btn btn-outline-dark me-3">목록</a>
+        <a href="./main.php" class="btn btn-outline-dark me-3" align="center">목록</a> 
         <?php
         if(isset ($_SESSION['userid']) && $_SESSION['userid'] === $rows['id']){
             echo '<a href="./modify.php?number=' . $number . '&id=' . $_rows['id'] . '" class="btn btn-outline-dark me-3">수정</a>';
@@ -84,7 +95,7 @@ mysqli_query($connect, $update_query);
                             <button class="btn btn-sm btn-outline-danger comment-delete-btn" onclick="deleteReply(<?=$reply['reply_number']?>)">댓글삭제</button>
                         <?php } ?>
                     </div>
-                    <div class="mt-2"><?=$reply['content'];?></div>
+                    <div class="mt-2"><?=$reply['contendt'];?></div>
                 </div>
             <?php } ?>
 
