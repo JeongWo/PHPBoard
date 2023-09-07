@@ -4,83 +4,77 @@
     <head>
         <meta charset='utf-8'>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-     
+        <link rel="stylesheet" href="test.css">
     </head>
-    <style>
-        table{
-            border-top: 1px solid #444444;
-            border-collapse: collapse;
-        }
-        tr{
-            border-bottom: 1px solid #444444;
-            padding: 10px;
-        }
-        td{
-            border-bottom: 1px solid #efefef;
-            padding: 10px;
-        }
-        table .even{
-            background: #efefef;
-        }
-        .text{
-            text-align:center;
-            padding-top:20px;
-            color:#000000;
-        }
-        .text:hover{
-            text-decoration: underline;
-        }
-        a:link {color : #57A0EE; text-decoration:none;}
-        a:hover {text-decoration : underline;}
-    </style>
-<body>
+
+<style>
+form.d-flex {
+  display: flex;
+}
+/* .flex-row {
+  flex-grow: 1;
+  margin-right: 10px; 
+} */
+
+.flex-row:nth-child(2) {
+  flex: 2; 
+}
+
+.flex-row:nth-child(3) {
+  flex: 1; 
+}
+</style>
+
+    <body>
+    <div class="container">
+    <div class="form-container" id="board-form">
     <?php
-    include "connect.php";
-    
+    require "connect.php";
     session_start();
-    
     if(isset($_SESSION['userid'])) {
-        echo $_SESSION['userid'];?>님 안녕하세요
+        echo $_SESSION['userid'];?>님 안녕하세요~
         <br/>
         <?php
-        echo '<button onclick="location.href=\'./logout.php\'">로그아웃</button>';
-        ?>
+        echo '<button onclick="location.href=\'./logout.php\'" id="btn-logout">로그아웃</button>';
+        ?><br/>
         <?php
     }else{
-        ?> <button class="btn btn-dark" onclick="location.href='./login.php'">로그인</button>
-        <br/>
-        
-        <?php }
+        ?>  <button  onclick="location.href='./login.php'" align="center">로그인</button><br/>
+        <?php 
+        }
     ?>
+<h1 style="color: #b38bff;">게시판</h1>
 
-<h2 align=center>게시판</h2>
+        <form method="get" action="search_action.php" class="d-flex">
+            <div class="flex-row">
+                <select class="form-select" aria-label="Select search option" name="search_option">
+                    <option selected>선택</option>
+                    <option value="t">제목</option>
+                    <option value="w">작성자</option>
+                    <option value="tw">제목+내용</option>
+                </select>
+            </div>
+                    </br>
+            <div class="flex-row">
+                <input type="text" class="form-control" name="search" placeholder="검색어를 입력하세요" />
+            </div>
+            <div class="flex-row">
+                <button class="s_button" type="submit">검색</button>
+            </div>
+        </form>
 
-<table align = center>
-    <thead align = "center">
-        
+        <table class="table table-custom-primary table-striped mt-3">
+        <thead>
     <tr class="table-light">
-            <td class="table-dark" width = "50" aligin="center">번호</td>
-            <td class="table-dark" width = "500" aligin="center">제목</td>
-            <td class="table-dark" width = "100" aligin="center">작성자</td>
-            <td class="table-dark" width = "200" aligin="center">날짜</td>
-            <td class="table-dark" width = "50" aligin="center">조회수</td>
+    <th class="table-custom-primary" width="150" align="center">번호</th>
+            <th class="table-custom-primary" width="500" align="center">제목</th>
+            <th class="table-custom-primary" width="200" align="center">작성자</th>
+            <th class="table-custom-primary" width="250" align="center">날짜</th>
+            <th class="table-custom-primary" width="150" align="center">조회수</th>
     </tr>
-        
     </thead>
-    
-    <form method="get" action="search_action.php">
-        <select class="form-select form-select-lg mb-3" name="search_option">
-            <option value="t">제목</option>
-            <option value="w">작성자</option>
-            <option value="tw">제목+내용</option>
-        </select>
-        <input type="text" class="form-control" name="search" size="40" />
-        <button class="btn btn-dark" type="submit" >검색</button>
-    </form>
-    
+    <tbody>
     <?php
-
-require "connect.php";
 
 if(isset($_GET['search_option']) && isset($_GET['search'])) {
     $search_option = $_GET['search_option'];
@@ -93,8 +87,9 @@ if(isset($_GET['search_option']) && isset($_GET['search'])) {
     } else if($search_option == "tw") {
     $query = "SELECT * FROM board WHERE title LIKE '%$search%' OR content LIKE '%$search%'";
 }
+
 $s_result = mysqli_query($connect,$query);
-$query = "SELECT * FROM board order by number desc";
+$query = "SELECT * FROM board ORDER BY number DESC";
 $result = mysqli_query($connect,$query);
 $total_rows = mysqli_num_rows($result);
 $row_number = $total_rows;
@@ -116,13 +111,11 @@ if(mysqli_num_rows($s_result) > 0) {
 } else {
     echo "검색 옵션과 검색어를 입력하세요.";
 }
-
 ?>
-
-
+</tbody>
     </table>
-    <div class=text>
-        <button><font class="btn btn-dark" style="cursor: hand"onClick="location.href='./write.php'">글쓰기</font></button>
+    <div class="text-center">
+         <button onclick="location.href='./write.php'">작성</button>
     </div>
    
 </body>

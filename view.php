@@ -24,7 +24,35 @@ a.btn {
 .border.p {
     background: #333;
 }
+#btn-home {
+  padding: 6px;
+  background-color: #b38bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.2s ease-in-out;
+}
 
+#btn-home:hover {
+  background-color: #8c5fb2;
+}
+
+#btn-login {
+  padding: 6px;
+  background-color: #b38bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#btn-login:hover {
+  background-color: #8c5fb2;
+}
 </style>
 <body>
 
@@ -55,7 +83,7 @@ mysqli_query($connect, $update_query);
     </div>
 
     <div class="d-flex justify-content-center mt-4">
-        <a href="./main.php" class="btn btn-outline-dark me-3" align="center">홈</a> 
+        <a href="./main.php" id="btn-home" align="center">🏠️</a> 
         <?php
         if(isset ($_SESSION['userid']) && $_SESSION['userid'] === $rows['id']){
             echo '<a href="./modify.php?number=' . $number . '&id=' . $_rows['id'] . '" class="btn btn-outline-dark me-3">수정</a>';
@@ -65,7 +93,23 @@ mysqli_query($connect, $update_query);
     </div>
 
     <div class="mt-5">
+    <div class="d-flex justify-content-between">
         <h3 class="text-center">댓글</h3>
+                <?php if (isset($_SESSION['userid'])) { ?>
+                <form action="comment_write.php" method="post">
+                    <input type="hidden" name="board_number" value="<?=$number?>">
+                    <input type="hidden" name="parent_comment_number" value="0">
+                    <input type="hidden" name="id" value="<?=$_SESSION['userid']?>">
+                    <div class="mb-3">
+                        <textarea class="form-control" name="content" rows="3" placeholder="댓글을 작성해주세요~"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn btn-outline-primary">댓글작성</button>
+                </form> 
+                <?php } else { ?>
+            <button id="btn-login" onclick="location.href='./login.php'">로그인</button>
+        <?php } ?>
+    </div>
+
         <?php
         $sql = "SELECT * FROM comment WHERE board_number='$number' ORDER BY number DESC";
         $comment_result = mysqli_query($connect, $sql);
@@ -129,8 +173,6 @@ mysqli_query($connect, $update_query);
                     <button type="submit" class="btn btn btn-outline-primary">댓글작성</button>
                 </form> 
             </div>
-        <?php } else { ?>
-            <button class="btn btn-dark" onclick="location.href='./login.php'">로그인</button>
         <?php } ?>
     </div>
 </div>

@@ -5,6 +5,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="test.css">
 </head>
+<style>
+form.d-flex {
+  display: flex;
+}
+/* .flex-row {
+  flex-grow: 1;
+  margin-right: 10px; 
+} */
+
+.flex-row:nth-child(2) {
+  flex: 2; 
+}
+
+.flex-row:nth-child(3) {
+  flex: 1; 
+}
+
+</style>
 <body>
     <div class="container">
         <div class="form-container" id="board-form">
@@ -12,12 +30,12 @@
             require "connect.php";
             session_start();
             if(isset($_SESSION['userid'])) {
-                echo $_SESSION['userid'];
-                ?><br/>
+                echo $_SESSION['userid'];?>님 안녕하세요~
+                <br/>
                 <?php
-                echo '<button onclick="location.href=\'./logout.php\'">로그아웃</button>';
+                echo '<button onclick="location.href=\'./logout.php\'" id="btn-logout">로그아웃</button>';
             }else{
-                ?> <button  onclick="location.href='./login.php'" align="center">로그인</button><br/>
+                ?> <button id="btn-login" onclick="location.href='./login.php'" >로그인</button><br/>
                 <?php
             }
             ?>
