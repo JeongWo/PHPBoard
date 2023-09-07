@@ -38,6 +38,34 @@ a.btn {
 #btn-home:hover {
   background-color: #8c5fb2;
 }
+#btn-modify {
+  padding: 6px;
+  background-color: #b38bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#btn-modify:hover {
+  background-color: #8c5fb2;
+}
+#btn-delete {
+  padding: 6px;
+  background-color: #b38bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#btn-delete:hover {
+  background-color: #8c5fb2;
+}
 
 #btn-login {
   padding: 6px;
@@ -86,8 +114,8 @@ mysqli_query($connect, $update_query);
         <a href="./main.php" id="btn-home" align="center">🏠️</a> 
         <?php
         if(isset ($_SESSION['userid']) && $_SESSION['userid'] === $rows['id']){
-            echo '<a href="./modify.php?number=' . $number . '&id=' . $_rows['id'] . '" class="btn btn-outline-dark me-3">수정</a>';
-            echo '<a href="./board_delete.php?number=' . $number. '&id='. $_rows['id'] . '" class="btn btn-outline-danger">삭제</a>';
+            echo '<a href="./modify.php?number=' . $number . '&id=' . $_rows['id'] . '" id="btn-modify">수정</a>';
+            echo '<a href="./board_delete.php?number=' . $number. '&id='. $_rows['id'] . '" id="btn-delete">삭제</a>';
         }
         ?>
     </div>
@@ -96,15 +124,7 @@ mysqli_query($connect, $update_query);
     <div class="d-flex justify-content-between">
         <h3 class="text-center">댓글</h3>
                 <?php if (isset($_SESSION['userid'])) { ?>
-                <form action="comment_write.php" method="post">
-                    <input type="hidden" name="board_number" value="<?=$number?>">
-                    <input type="hidden" name="parent_comment_number" value="0">
-                    <input type="hidden" name="id" value="<?=$_SESSION['userid']?>">
-                    <div class="mb-3">
-                        <textarea class="form-control" name="content" rows="3" placeholder="댓글을 작성해주세요~"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn btn-outline-primary">댓글작성</button>
-                </form> 
+             
                 <?php } else { ?>
             <button id="btn-login" onclick="location.href='./login.php'">로그인</button>
         <?php } ?>
@@ -120,6 +140,7 @@ mysqli_query($connect, $update_query);
         <div class="border p-3 mt-3">
             <div class="d-flex justify-content-between">
                 <div><b><?=$cl['id'];?></b> | <?=substr($cl['date'],0,10);?></div>
+                <hr>
                 <?php if (isset($_SESSION['userid']) && $_SESSION['userid'] == $cl['id']) { ?>
                     <button class="btn btn-sm btn btn-outline-danger comment-delete-btn" onclick="deleteComment(<?=$cl['number']?>)">삭제</button>
                 <?php } ?>
@@ -135,6 +156,7 @@ mysqli_query($connect, $update_query);
                 <div class="border p-3 mt-3">
                     <div class="d-flex justify-content-between">
                         <div><b><?=$reply['id'];?></b> | <?=substr($reply['date'],0,10);?></div>
+                        <hr>
                         <?php if (isset($_SESSION['userid']) && $_SESSION['userid'] == $reply['id']) { ?>
                             <button class="btn btn-sm btn-outline-danger comment-delete-btn" onclick="deleteReply(<?=$reply['reply_number']?>)">삭제</button>
                         <?php } ?>
