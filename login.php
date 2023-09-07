@@ -8,20 +8,20 @@
 <body>
     <div class="container">
     <div class="form-container" id="login-form">
-    <h1>Login</h1>
+    <h1>로그인</h1>
         <form action='login_action.php' method='post'>
 
-        <label for="id">Username</label> 
+        <label for="id">아이디</label> 
         <input type="text" name="id" id="id" />
 
-        <label for="pw">Password</label>
+        <label for="pw">비밀번호</label>
         <input type="password" name="pw" id="pw" />
            
-        <button type="submit">Continue</button>
+        <button type="submit">로그인</button>
         </form>
         <div class="center-buttons">
-        <button id="join" onclick="location.href='./join.php'">Create your account</button>
-        <button id="find_pw" onclick="location.href='./find_pw.php'">Find your password?</button>
+        <button id="join" onclick="location.href='./join.php'">회원가입</button>
+        <button id="find_pw" onclick="location.href='./find_pw.php'">비밀번호찾기</button>
         </div>
     </div>
     </div>

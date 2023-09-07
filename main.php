@@ -17,14 +17,14 @@
                 <?php
                 echo '<button onclick="location.href=\'./logout.php\'">로그아웃</button>';
             }else{
-                ?> <button  onclick="location.href='./login.php'" align="center">Login</button><br/>
+                ?> <button  onclick="location.href='./login.php'" align="center">로그인</button><br/>
                 <?php
             }
             ?>
             <h1 style="color: #b38bff;">게시판</h1>
 
             <form method="get" action="search_action.php" class="d-flex">
-                <div class="flex-grow-2">
+                <div class="flex-row">
                     <select class="form-select" aria-label="Select search option" name="search_option">
                         <option selected>선택</option>
                         <option value="t">제목</option>
@@ -33,11 +33,11 @@
                     </select>
                 </div>
         </br>
-                <div class="flex-grow-3">
+                <div class="flex-row">
                     <input type="text" class="form-control" name="search" placeholder="검색어를 입력하세요" />
                 </div>
-                <div class="flex-grow-2">
-                    <button class="s_button" type="submit">Search</button>
+                <div class="flex-row">
+                    <button class="s_button" type="submit">검색</button>
                 </div>
             </form>
 
@@ -76,7 +76,7 @@
     </tbody>
 </table>
             <div class="text-center">
-                <button onclick="location.href='./write.php'">write Post</button>
+                <button onclick="location.href='./write.php'">작성</button>
             </div>
         </div>
     </div>
