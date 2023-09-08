@@ -13,6 +13,6 @@ if($result) {
             location.replace("./view.php?number=<?=$number?>");
         </script>
         <?php }else{
-            echo "fail";
+            echo "실패했습니다.";
         }
 ?>
