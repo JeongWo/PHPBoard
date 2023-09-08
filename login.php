@@ -14,7 +14,7 @@
         <label for="id">ID</label> 
         <input type="text" name="id" id="id" placeholder="아이디"/>
 
-        <label for="pw">PW</label>
+        <label for="pw">PW</label> 
         <input type="password" name="pw" id="pw" placeholder="비밀번호"/>
            
         <button type="submit">로그인</button>
