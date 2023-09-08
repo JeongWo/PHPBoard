@@ -142,7 +142,7 @@ mysqli_query($connect, $update_query);
     </div>
 
     <div class="d-flex justify-content-center mt-4">
-        <a href="./main.php" id="btn-home" align="center">🏠️</a> 
+        <a href="./index.php" id="btn-home" align="center">🏠️</a> 
         <?php
         if(isset ($_SESSION['userid']) && $_SESSION['userid'] === $rows['id']){
             echo '<a href="./modify.php?number=' . $number . '&id=' . $_rows['id'] . '" id="btn-modify">수정</a>';

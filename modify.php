@@ -11,7 +11,7 @@ $content=$rows['content'];
 $usrid=$rows['id'];
 
 session_start();
-$URL="./main.php";
+$URL="./index.php";
 if(!isset($_SESSION['userid'])) {
     ?> <script>
         alert("권한이 없습니다.");

@@ -1,6 +1,6 @@
 <?php
 require "connect.php";
-$URL = './main.php';
+$URL = './index.php';
 
 $number = $_GET['number'];
 
