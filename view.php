@@ -83,13 +83,13 @@ a.btn {
 }
 
 #btn-comment {
-  padding: 6px;
+  padding: 5px;
   background-color: #b38bff;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 15px;
   transition: background-color 0.2s ease-in-out;
 }
 
