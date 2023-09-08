@@ -7,11 +7,11 @@
 <body>
     <div class="container">
     <div class="form-container" id="login-form">
-    <h1>Find your password</h1>
+    <h1>비밀번호 찾기</h1>
         <form action='find_pw_action.php' method='post'>
-        <label for="id">Username</label>
+        <label for="id">Id를 입력해주세요</label>
         <input type="text" id="id_find" name="id_find" type="text" />
-        <button type="submit">Continue</button>
+        <button type="submit">비밀번호 찾기</button>
         </form>
 </div>
 </div>

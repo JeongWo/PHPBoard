@@ -11,7 +11,7 @@
     <form action='join_action.php' method='post' > 
     
     <div class="row mb-3">
-      <label for="user_id" class="col-sm-2 col-form-label" >ID</label>
+      <label for="user_id" class="col-sm-2 col-form-label" >Id</label>
       <div class="col-sm-10">
         <input type="text" class="form-control" name="id" id="user_id">
         <input type="hidden" name="decide_id" id="decide_id">
@@ -21,7 +21,7 @@
     </div>
     
     <div class="row mb-3">
-      <label for="pw" class="col-sm-2 col-form-label" >PW</label>
+      <label for="pw" class="col-sm-2 col-form-label" >Password</label>
       <div class="col-sm-10">
         <input type="password" class="form-control" name="pw" id="pw">
       </div>
@@ -36,7 +36,7 @@
     
     <fieldset class="row mb-3">
       </div>
-      <button type="submit" id="join_button" class="btn btn-dark">Sign in</button>
+      <button type="submit" id="join_button" class="btn btn-dark">회원가입</button>
     </form>
 
   <script>
