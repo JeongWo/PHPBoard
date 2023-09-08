@@ -81,6 +81,37 @@ a.btn {
 #btn-login:hover {
   background-color: #8c5fb2;
 }
+
+#btn-comment {
+  padding: 6px;
+  background-color: #b38bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#btn-comment:hover {
+  background-color: #8c5fb2;
+}
+
+#btn-c-delete {
+  padding: 5px;
+  background-color: #ff3333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#btn-c-delte:hover {
+  background-color: #ff3333;
+}
+
 </style>
 <body>
 
@@ -142,7 +173,7 @@ mysqli_query($connect, $update_query);
                 <div><b><?=$cl['id'];?></b> | <?=substr($cl['date'],0,10);?></div>
                 <hr>
                 <?php if (isset($_SESSION['userid']) && $_SESSION['userid'] == $cl['id']) { ?>
-                    <button class="btn btn-sm btn btn-outline-danger comment-delete-btn" onclick="deleteComment(<?=$cl['number']?>)">삭제</button>
+                    <button id="btn-c-delete" onclick="deleteComment(<?=$cl['number']?>)">삭제</button>
                 <?php } ?>
             </div>
             <div class="mt-2"><?=$cl['content'];?></div>
@@ -158,7 +189,7 @@ mysqli_query($connect, $update_query);
                         <div><b><?=$reply['id'];?></b> | <?=substr($reply['date'],0,10);?></div>
                         <hr>
                         <?php if (isset($_SESSION['userid']) && $_SESSION['userid'] == $reply['id']) { ?>
-                            <button class="btn btn-sm btn-outline-danger comment-delete-btn" onclick="deleteReply(<?=$reply['reply_number']?>)">삭제</button>
+                            <button id="btn-c-delete" onclick="deleteReply(<?=$reply['reply_number']?>)">삭제</button>
                         <?php } ?>
                     </div>
                     <div class="mt-2"><?=$reply['content'];?></div>
@@ -175,7 +206,7 @@ mysqli_query($connect, $update_query);
                         <div class="mb-3">
                             <textarea class="form-control" name="content" rows="3" placeholder="댓글을 작성해주세요~"></textarea>
                         </div>
-                        <button type="submit" class="btn btn btn-outline-primary">댓글작성</button>
+                        <button type="submit" id="btn-comment">댓글작성</button>
                     </form> 
                 </div>
             <?php } ?>
@@ -192,7 +223,7 @@ mysqli_query($connect, $update_query);
                     <div class="mb-3">
                         <textarea class="form-control" name="content" rows="3" placeholder="댓글을 작성해주세요~"></textarea>
                     </div>
-                    <button type="submit" class="btn btn btn-outline-primary">댓글작성</button>
+                    <button type="submit" id="btn-comment">댓글작성</button>
                 </form> 
             </div>
         <?php } ?>
