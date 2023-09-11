@@ -22,6 +22,10 @@ form.d-flex {
   flex: 1; 
 }
 
+.table-border {
+    border-radius: 10px;
+}
+
 </style>
 <body>
     <div class="container">
@@ -59,7 +63,8 @@ form.d-flex {
                 </div>
             </form>
 
-            <table class="table table-custom-primary table-striped mt-3">
+<div class="table-border">
+    <table class="table table-custom-primary table-striped mt-3">
     <thead>
         <tr class="table-custom-primary">
             <th class="table-custom-primary" width="150" align="center">번호</th>
@@ -92,7 +97,8 @@ form.d-flex {
         }
         ?>
     </tbody>
-</table>
+    </table>
+</div>
             <div class="text-center">
                 <button onclick="location.href='./write.php'">작성</button>
             </div>

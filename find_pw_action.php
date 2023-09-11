@@ -8,7 +8,11 @@
 
     if($row = mysqli_fetch_assoc($result)){
         $password = $row['pw'];
-        echo " $id 님의 비밀번호는 $password 입니다. ";
+        echo 
+        "<script>
+        alert('$id 님의 비밀번호는 $password 입니다.');
+        location.href = './index.php'; 
+        </script>";
         } else {
         echo "아이디가 틀렸습니다.";
         }
