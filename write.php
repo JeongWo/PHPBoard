@@ -22,13 +22,16 @@
             
         <h1>게시판 생성</h1>
 
-        <form action="write_action.php" method="post">
+        <form action="write_action.php" method="post" enctype="multipart/form-data">
 
             <label align="center">작성자 : <input type="hidden" name="name" value="<?=$_SESSION['userid']?>"><?=$_SESSION['userid']?></label>
                  
             <label align="center">제목</label>
             <input type="text" name="title" class="form-control">
                    
+            <label align="center">사진 업로드</label>
+            <input type="file" name="image" class="form-control">
+
             <label align="center">내용</label>
             <textarea class="form-control" name="content" rows="15"></textarea>
             
