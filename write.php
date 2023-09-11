@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="test.css">
+    <link rel="stylesheet" href="write.css">
 
 </head>
 <body>
@@ -17,33 +17,29 @@
         }
     ?>
 
-    <div class="container mt-4">
+    <div class="container">
+        <div class="form-container">
+            
+        <h1>게시판 생성</h1>
+
         <form action="write_action.php" method="post">
-            <table class="table table-bordered" align="center" width="700">
-                <thead class="bg-secondary text-white">
-                    <tr>
-                        <th colspan="2" class="text-center">글쓰기</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>작성자</td>
-                        <td><input type="hidden" name="name" value="<?=$_SESSION['userid']?>"><?=$_SESSION['userid']?></td>
-                    </tr>
-                    <tr>
-                        <td>제목</td>
-                        <td><input type="text" name="title" class="form-control"></td>
-                    </tr>
-                    <tr>
-                        <td>내용</td>
-                        <td><textarea class="form-control" name="content" rows="10"></textarea></td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <label align="center">작성자 : <input type="hidden" name="name" value="<?=$_SESSION['userid']?>"><?=$_SESSION['userid']?></label>
+                 
+            <label align="center">제목</label>
+            <input type="text" name="title" class="form-control">
+                   
+            <label align="center">내용</label>
+            <textarea class="form-control" name="content" rows="15"></textarea>
+            
             <div class="text-center mt-3">
-                <button type="submit" >작성</button>
+                <button type="submit" >생성</button>
             </div>
+            
         </form>
+        
+        </div>
+        
     </div>
 
 </body>
