@@ -1,9 +1,9 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
     <head> 
         <meta charset='uft-8'>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-        <link rel="stylesheet" href="test.css" />
+        <link rel="stylesheet" href="join.css" />
     </head>
 
     <body>
@@ -11,29 +11,32 @@
     <div class="form-container" id="board-form">
  
     <form action='join_action.php' method='post'> 
-    <div>
-      <label for="user_id">ID</label>
-        <input type="text"  name="id" id="user_id">
-        <input type="hidden" name="decide_id" id="decide_id">
-        <p><span id="decide" style='color:red;'>ID 중복 여부를 확인해주세요.</span>
-        <input type="button" id="check_button" value="확인하기" onclick="checkid();"  />
-    </div>
-
-    <div >
-      <label for="pw" >PW</label>
+    
+      <label for="user_id">아이디</label>
+      <input type="text"  name="id" id="user_id">
+      <input type="hidden" name="decide_id" id="decide_id">
+    
+      <div class = "id-check-btn">
+      <label id="decide" style='color:red;'>중복 확인하기</label>
+      <input type="button" id="check_button" value="중복확인" onclick="checkid();" />
+      </div>
+  
+      <label for="pw" >비밀번호</label>
       <input type="password"  name="pw" id="pw">
-    </div>
-
-    <div >
+  
+      <label for="pw_check" >비밀번호 확인</label>
+      <input type="password"  name="pw_check" id="pw_check">
+   
       <label for="email" >Email</label>
       <input type="email" name="email" id="email">
-    </div>
-
-      </div>
-      <button type="submit" id="join_button">회원가입</button>
+   
+    <button type="submit" id="join_button">회원가입</button>
+      
     </form>
-</div>
-</div>
+
+    </div>
+    </div>
+    
   <script>
 
   function checkid(){
