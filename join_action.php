@@ -3,20 +3,25 @@ require_once "connect.php";
 
 $id=$_POST['decide_id'];
 $pw=$_POST['pw']; 
+$pw_check=$_POST['pw_check']; 
 $email=$_POST['email'];
 
-function passwordCheck($pw)
+function passwordCheck($pw,$pw_check)
 {
     if (10 > strlen($pw) && strlen($pw) < 20) {
         return array(false, "비밀번호는 최소 10자 ~ 최대 20자로 입력해주세요.");
     }
 
-    if (preg_match("/\s/u", $pw)) {
+    if (preg_match("/\s/", $pw)) {
         return array(false, "비밀번호에 공백을 포함할 수 없습니다.");
     }
 
-    if (!preg_match('/[0-9]/u', $pw) || !preg_match('/[a-z]/u', $pw) || !preg_match("/[\!\@\#\$\%\^\&\*]/u", $pw)) {
+    if (!preg_match('/[0-9]/', $pw) || !preg_match('/[a-z]/', $pw) || !preg_match("/[\!\@\#\$\%\^\&\*]/", $pw)) {
         return array(false, "비밀번호에는 영문, 숫자, 특수문자를 혼합하여 입력해주세요.");
+    }
+
+    if ($pw != $pw_check) {
+        return array(false, "비밀번호가 같지 않습니다.");
     }
 
     return array(true);
@@ -32,10 +37,10 @@ if (empty($id) || empty($pw) || empty($email)) {
     exit;
 }
 
-$checkResult = passwordCheck($pw);
+$checkResult = passwordCheck($pw, $pw_check);
 $isValid = $checkResult[0]; 
 $errorMessage = $checkResult[1]; 
-list($isValid, $errorMessage) = passwordCheck($pw);
+list($isValid, $errorMessage) = passwordCheck($pw, $pw_check);
 
 if (!$isValid) {
     ?>
@@ -48,7 +53,7 @@ if (!$isValid) {
 }
 
 $date = date('Y-m-d H:i:s');
-$query = " INSERT INTO member(id, pw, email, date, permit) VALUES ('$id','$pw','$email','$date',0)";
+$query = " INSERT INTO member(id, pw, email, date, permit, pw_check) VALUES ('$id','$pw','$email','$date',0, '$pw_check')";
 
 $result = $connect->query($query);
 if($result) {
