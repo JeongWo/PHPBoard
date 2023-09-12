@@ -13,6 +13,7 @@ require_once "connect.php";
 
 session_start();
 $number = $_GET['number'];
+$image_path = $_SESSION['image_path'];
 $number = mysqli_real_escape_string($connect, $number);
 
 $query = "SELECT * FROM board WHERE number='$number' ";
@@ -32,6 +33,7 @@ mysqli_query($connect, $update_query);
             <div class="text-center bg-light p-2">조회수: <?=$rows['hit']?></div>
         </div>
         <hr>
+        <img src="<?php echo $image_path; ?>" alt="이미지">
         <p class="lead"><?=$rows['content']?></p>
     </div>
 
@@ -39,8 +41,8 @@ mysqli_query($connect, $update_query);
         <a href="./index.php" id="btn-home" align="center">🏠️</a> 
         <?php
         if(isset ($_SESSION['userid']) && $_SESSION['userid'] === $rows['id']){
-            echo '<a href="./modify.php?number=' . $number . '&id=' . $_rows['id'] . '" id="btn-modify">수정</a>';
-            echo '<a href="./board_delete.php?number=' . $number. '&id='. $_rows['id'] . '" id="btn-delete">삭제</a>';
+            echo '<a href="./modify.php?number=' . $number . '&id=' . $_rows['id'] . '" id="btn-modify"> 수정 </a>';
+            echo '<a href="./board_delete.php?number=' . $number. '&id='. $_rows['id'] . '" id="btn-delete"> 삭제 </a>';
         }
         ?>
     </div>
