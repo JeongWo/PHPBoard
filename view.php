@@ -12,31 +12,39 @@
 require_once "connect.php";
 
 session_start();
+
 $number = $_GET['number'];
-$image_path = $_SESSION['image_path'];
 $number = mysqli_real_escape_string($connect, $number);
 
-$query = "SELECT * FROM board WHERE number='$number' ";
+$query = "SELECT * FROM board WHERE number='$number'";
 $result = mysqli_query($connect, $query);
 $rows = mysqli_fetch_array($result);
 
 $update_query = "UPDATE board SET hit=hit + 1 WHERE number='$number'";
 mysqli_query($connect, $update_query);
+
+$query_images = "SELECT * FROM board WHERE images='$images'";
+mysqli_query($connect, $query_images);
+var_dump($images);
+
 ?>
 
 <div class="container">
-<div class="form-container">
-    <h1 class="text-center">제목 : </Title><?=$rows['title']?></h1>
-    <div class="border p-3 mt-3">
-        <div class="d-flex justify-content-between align-items-center mt-3">
-            <div class="text-center bg-light p-2">작성자: <?=$rows['id']?></div>
-            <div class="text-center bg-light p-2">조회수: <?=$rows['hit']?></div>
-        </div>
-        <hr>
-        <img src="<?php echo $image_path; ?>" alt="이미지">
+    <div class="form-container">
+        <h1 class="text-center"> 제목 : </Title><?=$rows['title']?></h1>
+        <div class="border p-3 mt-3">
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <div class="text-center bg-light p-2">작성자: <?=$rows['id']?></div>
+                <div class="text-center bg-light p-2">조회수: <?=$rows['hit']?></div>
+            </div>
+            <hr>
+            <?php if($images == 1){?>
+                <img src="<?=$images?>" alt="이미지">
+                <?php
+            }?>
         <p class="lead"><?=$rows['content']?></p>
     </div>
-
+    
     <div class="d-flex justify-content-center mt-4">
         <a href="./index.php" id="btn-home" align="center">🏠️</a> 
         <?php
@@ -129,13 +137,13 @@ mysqli_query($connect, $update_query);
 
 <script>
     function deleteComment(comment_number) {
-        if (confirm("Are you sure you want to delete the comment?")) {
+        if (confirm("댓글을 삭제하시겠습니까?")) {
             window.location.href = "./comment_delete.php?number="+comment_number;
         }
     }
 
     function deleteReply(reply_number) {
-        if (confirm("Are you sure you want to delete the comment?")) {
+        if (confirm("댓글을 삭제하시겠습니까?")) {
             window.location.href = "./reply_delete.php?number="+reply_number;
         }
     }
