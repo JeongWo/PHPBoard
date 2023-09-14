@@ -12,14 +12,14 @@ var_dump($_FILES);
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["image"]["name"]);
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+$imageFileType = mime_content_type($_FILES["image"]["tmp_name"]);
 
 if ($_FILES["image"]["size"] > 5000000) {
     echo "파일이 너무 큽니다.";
     $uploadOk = 0;
 }
 
-if (!in_array($imageFileType, ["jpg", "png", "jpeg", "gif"])) {
+if ($imageFileType !== "image/jpeg" && $imageFileType !== "image/png" && $imageFileType !== "image/gif") {
     echo "JPG, JPEG, PNG, GIF 형식만 가능합니다.";
     $uploadOk = 0; 
 }
