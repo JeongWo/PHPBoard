@@ -23,8 +23,13 @@ $rows = mysqli_fetch_array($result);
 $update_query = "UPDATE board SET hit=hit + 1 WHERE number='$number'";
 mysqli_query($connect, $update_query);
 
-$image_path = isset($_SESSION['image_path']) ? $_SESSION['image_path'] : null; 
-var_dump($_SESSION['image_path']);
+// 시스템 경로에서 파일 이름만 추출
+$file_name = basename($rows['images']);
+
+$image_path = "/uploads/" . $file_name;
+
+
+var_dump($image_path);
 
 ?>
 
@@ -37,12 +42,15 @@ var_dump($_SESSION['image_path']);
                 <div class="text-center bg-light p-2">조회수: <?=$rows['hit']?></div>
             </div>
             <hr>
-            <?php 
-            if(isset($_SESSION['image_path']) && !empty($_SESSION['image_path'])){?>
-    <img src="<?=$_SESSION['image_path']?>" alt="이미지">
-<?php 
-} 
-?>
+        <div>
+        <?php 
+            if(isset($image_path) && !empty($image_path)){?>
+            <img src="<?=$image_path?>">
+        <?php 
+        } 
+        ?>
+        </div>
+
         <p class="lead"><?=$rows['content']?></p>
     </div>
     
