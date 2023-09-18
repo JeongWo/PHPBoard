@@ -23,9 +23,8 @@ $rows = mysqli_fetch_array($result);
 $update_query = "UPDATE board SET hit=hit + 1 WHERE number='$number'";
 mysqli_query($connect, $update_query);
 
-$query_images = "SELECT * FROM board WHERE images='$images'";
-mysqli_query($connect, $query_images);
-var_dump($images);
+$image_path = isset($_SESSION['image_path']) ? $_SESSION['image_path'] : null; 
+var_dump($_SESSION['image_path']);
 
 ?>
 
@@ -38,10 +37,12 @@ var_dump($images);
                 <div class="text-center bg-light p-2">조회수: <?=$rows['hit']?></div>
             </div>
             <hr>
-            <?php if($images == 1){?>
-                <img src="<?=$images?>" alt="이미지">
-                <?php
-            }?>
+            <?php 
+            if(isset($_SESSION['image_path']) && !empty($_SESSION['image_path'])){?>
+    <img src="<?=$_SESSION['image_path']?>" alt="이미지">
+<?php 
+} 
+?>
         <p class="lead"><?=$rows['content']?></p>
     </div>
     
