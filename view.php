@@ -23,13 +23,9 @@ $rows = mysqli_fetch_array($result);
 $update_query = "UPDATE board SET hit=hit + 1 WHERE number='$number'";
 mysqli_query($connect, $update_query);
 
-// 시스템 경로에서 파일 이름만 추출
 $file_name = basename($rows['images']);
 
 $image_path = "/uploads/" . $file_name;
-
-
-var_dump($image_path);
 
 ?>
 
@@ -45,7 +41,7 @@ var_dump($image_path);
         <div>
         <?php 
             if(isset($image_path) && !empty($image_path)){?>
-            <img src="<?=$image_path?>">
+            <img src="<?=$image_path?>" width="100%" height="auto">
         <?php 
         } 
         ?>

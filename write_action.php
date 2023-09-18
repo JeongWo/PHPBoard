@@ -1,10 +1,4 @@
 <?php
-ini_set("display_startup_errors", 1);
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
-
-
-
 require_once "connect.php";
 $number = $_GET['number']; 
 $id = $_POST['name'];
@@ -13,9 +7,8 @@ $title = $_POST['title'];
 $content = $_POST['content'];
 $date = date('Y-m-d H:i:s');
 $hit = $_POST['hit'];
-var_dump($_FILES);
-$target_dir = "uploads/";
 
+$target_dir = "uploads/";
 
 $target_file = $_SERVER['DOCUMENT_ROOT'] . "/uploads/" . basename($_FILES["image"]["name"]);
 $uploadOk = 1;
