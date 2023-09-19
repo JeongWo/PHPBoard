@@ -16,11 +16,11 @@ session_start();
 $number = $_GET['number'];
 $number = mysqli_real_escape_string($connect, $number);
 
-$query = "SELECT * FROM board WHERE number='$number'";
+$query = "SELECT * FROM board WHERE number= $number";
 $result = mysqli_query($connect, $query);
 $rows = mysqli_fetch_array($result);
 
-$update_query = "UPDATE board SET hit=hit + 1 WHERE number='$number'";
+$update_query = "UPDATE board SET hit=hit + 1 WHERE number= $number";
 mysqli_query($connect, $update_query);
 
 $file_name = basename($rows['images']);
