@@ -1,3 +1,4 @@
+<?php require_once "connect.php"; ?>
 <a href="./index.php" id="btn-home" align="center">🏠️</a> 
 <?php
 if(isset ($_SESSION['userid']) && $_SESSION['userid'] === $rows['id']){

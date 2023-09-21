@@ -1,5 +1,5 @@
 <?php
-require "connect.php";
+require_once "connect.php";
 session_start();
 if(isset($_SESSION['userid'])) {
     echo $_SESSION['userid'];?>님 안녕하세요~<br/>

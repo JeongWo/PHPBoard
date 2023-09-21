@@ -1,3 +1,5 @@
+<?php require_once "connect.php"; ?>
+
 <table class="table table-custom-primary table-striped mt-3">
 <thead>
     <tr class="table-custom-primary">

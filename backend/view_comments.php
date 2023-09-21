@@ -1,3 +1,5 @@
+<?php require_once "connect.php"; ?>
+
 <div class="mt-5">
     <div class="d-flex justify-content-between">
         <h3 class="text-center">댓글</h3>
