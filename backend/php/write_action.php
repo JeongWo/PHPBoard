@@ -11,7 +11,7 @@ $hit = $_POST['hit'];
 
 $target_dir = "uploads/";
 
-$target_file = $_SERVER['DOCUMENT_ROOT'] . "/uploads/" . basename($_FILES["image"]["name"]);
+$target_file = $_SERVER['DOCUMENT_ROOT'] . "./uploads/" . basename($_FILES["image"]["name"]);
 $uploadOk = 1;
 
 if ($_FILES["image"]["size"] > 5000000) {
