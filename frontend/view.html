@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./styles/view.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+    <?php require_once "check_session.php"; ?>
+
+    <div class="container">
+        <div class="form-container">
+            <?php require "view_header.php"; ?>
+
+            <h1 class="text-center"> 제목 : <?=$rows['title']?></h1>
+            <div class="border p-3 mt-3">
+                <?php require "view_details.php"; ?>
+
+                <?php if(isset($image_path) && !empty($image_path)) { ?>
+                    <img src="<?=$image_path?>" width="100%" height="auto">
+                <?php } ?>
+                
+                <p class="lead"><?=$rows['content']?></p>
+            </div>
+            
+            <div class="d-flex justify-content-center mt-4">
+                <?php require "view_buttons.php"; ?>
+            </div>
+
+            <div class="mt-5">
+                <?php require "view_comments.php"; ?>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function deleteComment(comment_number) {
+            if (confirm("댓글을 삭제하시겠습니까?")) {
+                window.location.href = "./comment_delete.php?number="+comment_number;
+            }
+        }
+
+        function deleteReply(reply_number) {
+            if (confirm("댓글을 삭제하시겠습니까?")) {
+                window.location.href = "./reply_delete.php?number="+reply_number;
+            }
+        }
+    </script>
+</body>
+</html>

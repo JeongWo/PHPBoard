@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>댓글 작성</title>
+</head>
+<body>
+    <h1>댓글 작성</h1>
+    <form id="comment-reply-form">
+        <input type="hidden" name="board_number" value="<?= $_GET['board_number'] ?>">
+        <input type="hidden" name="parent_comment_number" value="<?= $_GET['parent_comment_number'] ?>">
+        <input type="hidden" name="id" value="<?= $_SESSION['userid'] ?>">
+        <div>
+            <label for="content">내용:</label><br>
+            <textarea name="content" id="content" cols="30" rows="10"></textarea>
+        </div>
+        <button type="submit">댓글 작성</button>
+    </form>
+</body>
+</html>

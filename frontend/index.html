@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" href="./styles/index.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container" id="board-form">
+                <?php 
+                require_once "header.php"; 
+                ?>
+
+            <h1 style="color: #b38bff;">게시판</h1>
+
+            <form method="get" action="/backend/search_action.php" class="d-flex">
+                <?php 
+                require_once "search_form.php"; 
+                ?>
+            </form>
+
+            <div class="table-border">
+                <?php 
+                require_once "board_table.php"; 
+                ?>
+            </div>
+
+            <div class="text-center">
+            <button onclick="location.href='write.html'">작성</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
