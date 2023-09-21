@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        </head>
+        <!-- <style>
+.view_table {
+border: 1px solid #444444;
+margin-top: 30px;
+}
+.view_title {
+height: 30px;
+text-align: center;
+background-color: #cccccc;
+color: black;
+width: 1000px;
+}
+.view_id {
+text-align: center;
+background-color: #EEEEEE;
+width: 30px;
+}
+.view_id2 {
+background-color: white;
+width: 60px;
+}
+.view_hit {
+background-color: #EEEEEE;
+width: 30px;
+text-align: center;
+}
+.view_hit2 {
+background-color: white;
+width: 60px;
+}
+.table-dark {
+padding-top: 20px;
+border-top: 1px solid #444444;
+height: 500px;
+}
+.view_btn {
+width: 700px;
+height: 200px;
+text-align: center;
+margin: auto;
+margin-top: 50px;
+}
+.view_btn1 {
+height: 50px;
+width: 100px;
+font-size: 20px;
+text-align: center;
+background-color: white;
+border: 2px solid black;
+border-radius: 10px;
+}
+.view_comment_input {
+width: 700px;
+height: 500px;
+text-align: center;
+margin: auto;
+}
+.view_text3 {
+font-weight: bold;
+float: left;
+margin-left: 20px;
+}
+.view_com_id {
+width: 100px;
+}
+.view_comment {
+width: 500px;
+}
+</style> -->
+<body>
+
+<?php
+
+include "connect.php";
+
+session_start();
+$number = $_GET['number'];
+$number = mysqli_real_escape_string($connect, $number);
+
+$query = "SELECT * FROM board WHERE number='$number' ";
+$result = mysqli_query($connect,$query);
+$rows = mysqli_fetch_array($result);
+
+$update_query = "UPDATE board SET hit=hit + 1 WHERE number='$number'";
+mysqli_query($connect,$update_query);
+?>
+
+<table class="view_table" align=center>
+    <tr class="table-light">
+        <td colspan="4" class="view_title"><?=$rows['title']?></td>
+    </tr>
+
+    <tr class="table-light">
+        <td class="view_id">작성자</td>
+        <td class="view_id2"><?=$rows['id']?></td>
+
+        <td class="view_hit">조회수</td>
+        <td class="view_hit2"><?=$rows['hit']?></td>
+    </tr>
+
+    <tr class="table-light">
+        <td class="table-dark" colspan="4" class="view_content" valign="top">
+            <?=$rows['content']?></td>
+    </tr>
+</table>
+
+    
+    <div class="view_btn">
+        <button class="view_btn1" onclick="location.href='./indexx.php'">목록</button>
+        <button class="view_btn1" onclick="location.href='./modify.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">수정</button>
+        <button class="view_btn1" onclick="location.href='./bdelete.php?number=<?=$number?>&id=<?=$_SESSION['userid']?>'">삭제</button>
+    </div>
+    
+  
+    <div class="comment_view">
+    <h3>댓글목록</h3>
+    <?php
+        $sql = "SELECT * FROM comment WHERE board_number='$number' ORDER BY number DESC";
+        $comment_result = mysqli_query($connect, $sql);
+        while ($cl = mysqli_fetch_array($comment_result)) {
+            $comment_number = $cl['number'];
+    ?>
+        <table>
+        <tr class="table-light">
+            <div><b><?=$cl['name'];?></b></div>
+            <div><b><?=$cl['id'];?></b></div>
+            <div><?=$cl['content'];?>    
+            <?php if (isset($_SESSION['userid']) && $_SESSION['userid'] == $cl['id']) { ?>
+                        <button onclick="deleteComment(<?=$cl['number']?>)">댓글삭제</button>
+            <?php } ?>
+            </div>
+            <div><?=substr($cl['date'],0,10);?></div> 
+            </tr>
+        </table>
+
+    <?php } ?>
+ 
+        <div>
+        <form action="comment_write.php" method="post">
+        <input type="hidden" name="board_number" value="<?=$number?>">
+        <input type="hidden" name="id" value="<?=$_SESSION['userid']?>"> 
+        <textarea name="content" id="content"></textarea>
+        <button type = "submit" id="comment_bt">댓글입력</button>
+        </form>
+        </div>
+
+        <script>
+        function deleteComment(comment_number) {
+    if (confirm("댓글을 삭제하시겠습니까?")) {
+        window.location.href = "comment_delete.php?number=" + comment_number;
+    }
+        }
+        </script>
+    </div>
+    </body>
+        </html>
