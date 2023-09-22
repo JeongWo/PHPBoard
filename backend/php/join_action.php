@@ -32,7 +32,7 @@ if (empty($id) || empty($pw) || empty($email)) {
     ?>
     <script>
     alert('기입하지 않은 정보가 있습니다.');
-    location.replace('../join.html');
+    location.replace('/PHPBoard/frontend/html/join.html');
     </script>
     <?php
     exit;
@@ -48,7 +48,7 @@ if (!$isValid) {
     ?>
     <script>
     alert('<?php echo $errorMessage; ?>');
-    location.replace('./join.html');
+    location.replace('/PHPBoard/frontend/html/join.html');
     </script>
     <?php
     exit;
@@ -62,7 +62,7 @@ if($result) {
     ?> 
     <script>
     alert("회원가입 되었습니다.");
-    location.replace("./login.html");
+    location.replace("/PHPBoard/frontend/html/login.html");
     </script>
 
 <?php

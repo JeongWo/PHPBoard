@@ -6,7 +6,7 @@
         <?php if (isset($_SESSION['userid'])) { ?>
            
         <?php } else { ?>
-            <button id="btn-login" onclick="location.href='./login.php'">로그인</button>
+            <button id="btn-login" onclick="location.href='/PHPBoard/backend/php/login_action.php'">로그인</button>
         <?php } ?>
     </div>
 

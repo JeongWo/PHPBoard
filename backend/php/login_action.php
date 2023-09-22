@@ -20,7 +20,7 @@ if(mysqli_num_rows($result)==1) {
                 ?> 
                 <script>
                     alert("로그인 되었습니다.");
-                    location.replace("./index.html");
+                    location.replace("/PHPBoard/frontend/html/index.html");
                 </script>
                 <?php
             }else{

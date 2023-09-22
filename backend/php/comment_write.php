@@ -7,7 +7,8 @@ $id = $_POST['id'];
 $content = $_POST['content'];
 $date = date('Y-m-d H:i:s');
 
-$query = "INSERT INTO comment (board_number, id, content, date, parent_number) VALUES ('$board_number', '$id', '$content', '$date', 0)";
+$query = "INSERT INTO comment (board_number, id, content, date, parent_number) 
+          VALUES ('$board_number', '$id', '$content', '$date', 0)";
 $result = mysqli_query($connect, $query);
 
 if ($result) {

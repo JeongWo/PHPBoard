@@ -13,7 +13,7 @@ if (mysqli_num_rows($result) == 1) {
     echo 
     "<script>
         alert('$id_find 님의 비밀번호는 $password 입니다.');
-        location.href = './index.html'; 
+        location.href = '/PHPBoard/frontend/html/index.html'; 
     </script>";
 } else {
     echo "아이디가 틀렸습니다.";

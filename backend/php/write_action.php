@@ -35,7 +35,7 @@ if ($uploadOk) {
     $image_path = "";
 }
 
-$URL = './index.php';
+$URL = '/PHPBoard/frontend/html/index.html';
 
 $query = "INSERT INTO board(number,title,content,date,hit,id,password,images) VALUES(null,'$title','$content',NOW(),0,'$id','$pw','$image_path')";
 $result = mysqli_query($connect, $query);

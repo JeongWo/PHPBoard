@@ -3,7 +3,7 @@ require_once "connect.php";
 
 session_start();
 
-$URL = "./login.php";
+$URL = "/PHPBoard/frontend/html/login.html";
 
 if (!isset($_SESSION['userid'])) {
     echo "<script>alert('로그인이 필요합니다.'); 

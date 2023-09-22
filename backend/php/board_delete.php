@@ -2,8 +2,7 @@
 
 require_once "connect.php";
 
-$URL = './index.html';
-
+$URL = '/PHPBoard/frontend/html/index.html';
 $number = $_GET['number'];
 
 $query = " DELETE FROM board WHERE number='$number' ";    

@@ -8,7 +8,8 @@ $id = $_POST['id'];
 $content = $_POST['content'];
 $date = date("Y-m-d H:i:s");
 
-$query = "INSERT INTO comment_reply (parent_comment_number, board_number, id, content, date) VALUES ('$parent_comment_number', '$board_number', '$id', '$content', '$date')";
+$query = "INSERT INTO comment_reply (parent_comment_number, board_number, id, content, date) 
+          VALUES ('$parent_comment_number', '$board_number', '$id', '$content', '$date')";
 
 if(mysqli_query($connect, $query)) {
     echo json_encode(['board_number' => $board_number]);
